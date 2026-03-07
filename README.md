@@ -1,0 +1,2 @@
+# DataPlus
+DataPlus is an AI-powered platform where users upload datasets and instantly receive insights, visualizations, and plain-language explanations — acting as a mini AI data analyst. It combines full-stack development, data analysis, and LLMs to automate data exploration for non-technical users.
