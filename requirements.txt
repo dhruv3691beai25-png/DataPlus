@@ -1,0 +1,27 @@
+# Core Dependencies
+fastapi
+uvicorn
+python-multipart
+python-dotenv
+requests
+
+# LLM Integrations
+groq
+google-genai
+
+# Data & AI Tools
+pandas
+numpy
+scikit-learn
+
+# Visualization & Reporting
+matplotlib
+seaborn
+reportlab
+plotly
+dash
+dash-bootstrap-components
+
+# Other Utilities
+flask-cors
+oauthlib

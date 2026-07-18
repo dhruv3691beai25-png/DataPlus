@@ -4,8 +4,8 @@ from fastapi.responses import StreamingResponse, JSONResponse
 from pydantic import BaseModel
 import pandas as pd
 import io
-from backend.analysis import analyze_dataset, chat_with_data
-from backend.clean_and_report import auto_clean_dataframe, generate_pdf_report
+from analysis import analyze_dataset, chat_with_data
+from clean_and_report import auto_clean_dataframe, generate_pdf_report
 
 app = FastAPI(title="DataPulse - AI Data Insight Generator")
 

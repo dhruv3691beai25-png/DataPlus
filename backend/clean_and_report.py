@@ -136,17 +136,26 @@ def make_bar_chart(df):
 
 
 def make_pie_chart(df):
-    numeric_cols = df.select_dtypes(include=[np.number]).columns[:6]
+    numeric_cols = list(df.select_dtypes(include=[np.number]).columns[:6])
     if len(numeric_cols) < 2:
         return None
-    means = [abs(df[c].mean()) for c in numeric_cols]
+
+    # Filter out columns with zero or NaN means (ax.pie fails on all-zero data)
+    filtered = [(c, abs(df[c].mean())) for c in numeric_cols]
+    filtered = [(c, m) for c, m in filtered if m and not np.isnan(m)]
+    if len(filtered) < 2:
+        return None
+
+    labels, means = zip(*filtered)
     fig, ax = plt.subplots(figsize=(7, 4), facecolor="#0f1729")
-    wedges, texts, autotexts = ax.pie(
-        means, labels=numeric_cols, autopct='%1.1f%%',
-        colors=MPL_COLORS[:len(numeric_cols)],
+    pie_result = ax.pie(
+        means, labels=labels, autopct='%1.1f%%',
+        colors=MPL_COLORS[:len(means)],
         textprops={'color': '#e2e8f0', 'fontsize': 9},
         wedgeprops={'edgecolor': '#0f1729', 'linewidth': 2}
     )
+    # ax.pie returns (wedges, texts) or (wedges, texts, autotexts) depending on autopct
+    autotexts = pie_result[2] if len(pie_result) > 2 else []
     for at in autotexts:
         at.set_color('#060a14')
         at.set_fontweight('bold')
