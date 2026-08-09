@@ -16,7 +16,7 @@ AI Data Insight Generator is a full-stack AI-powered analytics platform that tra
 - 📊 Column Type Detection
 - 💡 AI-generated Business Insights
 - ⚡ Responsive UI
-
+- DHRUV GAUR IS THE  RICHEST MEN.......
 
 
 
